@@ -15,10 +15,8 @@
     <Product>Microsoft.Identity.Client ($(TargetFramework))</Product>
     <IncludeSymbols>true</IncludeSymbols>
     <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
-    <DelaySign>true</DelaySign>
-    <PublicSign Condition="'$(OS)' != 'Windows_NT'">true</PublicSign>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\build\35MSSharedLib1024.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\build\MSAL.snk</AssemblyOriginatorKeyFile>
     <!-- Workaround until Xamarin supports PPDB -->
     <DebugType>full</DebugType>
   </PropertyGroup>
@@ -28,7 +26,7 @@
   <ItemGroup>
     <ProjectCapability Include="ShowFilesOutsideOfProject" />
     <None Include="**\*.cs;**\*.xml;**\*.axml" Exclude="obj\**\*.*;bin\**\*.*" />
-    <None Include="..\**\*.cs;..\**\*.xml;..\**\*.axml" Exclude="..\Microsoft.Identity.Client\obj\**\*.*;bin\**\*.*" />
+    <None Include="..\**\*.cs;..\**\*.xml;..\**\*.axml" Exclude="..\Microsoft.Identity.Client\obj\**\*.*;bin\**\*.*;..\Microsoft.Identity.Client\bin\**\*.xml" />
     <Compile Remove="Platforms\**\*.*;Resources\**\*.cs" />
     <EmbeddedResource Include="Properties\Microsoft.Identity.Client.rd.xml" />
     <Compile Include="..\MSAL.PCL\**\*.cs" Exclude="..\MSAL.PCL\Properties\**\*.cs;..\MSAL.PCL\MsalOption.cs" />
