@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFrameworks>net45;netstandard1.1;netstandard1.3;win81;MonoAndroid8.1;Xamarin.iOS10</TargetFrameworks>        
+    <TargetFrameworks>net45;netstandard1.1;netstandard1.3;uap10.0;MonoAndroid8.1;Xamarin.iOS10</TargetFrameworks>        
     <Authors>Microsoft</Authors>
     <PackageTitle>Microsoft Authentication Library</PackageTitle>
     <PackageLicenseUrl>https://go.microsoft.com/fwlink/?linkid=844762</PackageLicenseUrl>
@@ -22,10 +22,11 @@
     <IncludeSymbols>true</IncludeSymbols>
     <GenerateDocumentationFile Condition=" '$(Configuration)' == 'Release' ">true</GenerateDocumentationFile>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\build\MSAL.snk</AssemblyOriginatorKeyFile>
-    <!-- Workaround until Xamarin supports PPDB -->
+    <AssemblyOriginatorKeyFile>..\..\build\MSAL.snk</AssemblyOriginatorKeyFile>    
     <UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
-    <DebugType>full</DebugType>
+
+    <TargetPlatformMinVersion Condition="'$(TargetFramework)' == 'uap10.0' ">10.0.15063.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion Condition="'$(TargetFramework)' == 'uap10.0'">10.0.17134.0</TargetPlatformVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.1' ">
     <DefineConstants>$(DefineConstants);FACADE</DefineConstants>
@@ -60,7 +61,7 @@
     <EmbeddedResource Include="Properties\Microsoft.Identity.Client.rd.xml" />
   </ItemGroup>
   <ItemGroup>    
-    <PackageReference Include="GitVersionTask" Version="4.0.0-beta0011" PrivateAssets="All" />
+    <PackageReference Include="Nerdbank.Gitversioning" Version="2.1.84" PrivateAssets="All" />
     <PackageReference Include="AsyncUsageAnalyzers" Version="1.0.0-alpha003" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.1' or '$(TargetFramework)' == 'netstandard1.3'">
@@ -124,10 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\GlobalSuppressions.cs" />
-  </ItemGroup>
-  
-  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
-  
+  </ItemGroup>  
  
   <!-- This is here to workaround designer issues so VS sees them appropriately -->
   <ItemGroup>
