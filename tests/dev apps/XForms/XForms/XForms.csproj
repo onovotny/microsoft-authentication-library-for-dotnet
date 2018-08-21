@@ -6,15 +6,14 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\..\..\..\build\Sdl7.0.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
-    <!-- Workaround until Xamarin supports PPDB -->
-    <DebugType>full</DebugType>
+    
+    
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>MSAL.snk</AssemblyOriginatorKeyFile>
     <DelaySign>False</DelaySign>
 	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="StrongNamer" Version="0.0.6" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.91635" />
   </ItemGroup>
   <ItemGroup>
